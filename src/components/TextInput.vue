@@ -59,7 +59,7 @@ const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
 const inputId = computed(() => props.id || useId())
 
 const labelClasses = computed(() => [
-  'text-sm font-medium text-gray-700',
+  'text-sm font-medium text-primary',
   props.disabled ? 'text-gray-500' : ''
 ])
 
@@ -74,7 +74,7 @@ const inputClasses = computed(() => [
 ])
 
 const containerClasses = computed(() => [
-  'flex flex-col gap-1 p-2',
+  'flex flex-col gap-1 p-2 text-primary',
   {
     'focus:ring-purple-500': !props.error && !props.disabled,
     'focus:ring-red-400': props.error,

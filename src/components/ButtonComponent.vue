@@ -59,7 +59,7 @@ const variantClasses = computed(() => {
 })
 
 const buttonClasses = computed(() => [
-  'inline-flex items-center justify-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1',
+  'm-2 inline-flex items-center justify-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1',
   sizeClasses.value,
   variantClasses.value,
   {

@@ -5,24 +5,34 @@
     </div>
     <h1 class="text-2xl font-bold mb-6">User Registration</h1>
 
-    <form @submit.prevent="handleSubmit" class="space-y-4">
+    <form @submit.prevent="handleSubmit" class="space-y-4" novalidate>
       <TextInput v-model="form.name" label="Name" required :error="errors.name" @blur="validateName" />
 
       <TextInput v-model="form.email" label="Email" type="email" required :error="errors.email" @blur="validateEmail" />
 
       <NumberInputComponent v-model="form.age" label="Age" :min="18" :max="100" required :error="errors.age" />
 
-      <CheckboxComponent v-model="form.agreeToTerms" label="I agree to the terms and conditions"
-        :error="!!errors.terms" />
+      <CheckboxComponent 
+        v-model="form.agreeToTerms" 
+        label="I agree to the terms and conditions"
+        :error="!!errors.terms"
+        :errorMessage="errors.terms"
+        id="terms-checkbox"
+        required
+      />
 
       <div class="flex gap-4 pt-4 justify-center">
-        <ButtonComponent type="submit" :disabled="!isFormValid">
+        <ButtonComponent type="submit" :disabled="!isFormValid" aria-describedby="form-status">
           Submit
         </ButtonComponent>
 
-        <ButtonComponent variant="secondary" @click="clearFields">
+        <ButtonComponent variant="secondary" @click="clearFields" type="button">
           Clear Fields
         </ButtonComponent>
+      </div>
+      
+      <div id="form-status" class="sr-only" aria-live="polite">
+        {{ isFormValid ? 'Form is valid and ready to submit' : 'Form has validation errors' }}
       </div>
     </form>
   </div>

@@ -5,17 +5,45 @@
       <span v-if="required" class="text-red-500">*</span>
     </label>
     <div :class="containerClasses" :id="`container-${inputId}`">
-      <button type="button" :disabled="disabled || modelValue <= min" :class="buttonClasses" @click="decrement">
+      <button 
+        type="button" 
+        :disabled="disabled || modelValue <= min" 
+        :class="buttonClasses" 
+        @click="decrement"
+        :aria-label="`Decrease ${label || 'value'}`"
+        :aria-describedby="error ? `error-${inputId}` : undefined"
+      >
         -
       </button>
-      <input :id="inputId" type="number" :value="modelValue" :min="min" :max="max" :step="step" :disabled="disabled"
-        :readonly="readonly" :required="required" :class="inputClasses" @input="handleInput" @blur="handleBlur"
-        @focus="handleFocus" />
-      <button type="button" :disabled="disabled || modelValue >= max" :class="buttonClasses" @click="increment">
+      <input 
+        :id="inputId" 
+        type="number" 
+        :value="modelValue" 
+        :min="min" 
+        :max="max" 
+        :step="step" 
+        :disabled="disabled"
+        :readonly="readonly" 
+        :required="required" 
+        :class="inputClasses" 
+        @input="handleInput" 
+        @blur="handleBlur"
+        @focus="handleFocus"
+        :aria-describedby="error ? `error-${inputId}` : undefined"
+        :aria-invalid="!!error"
+      />
+      <button 
+        type="button" 
+        :disabled="disabled || modelValue >= max" 
+        :class="buttonClasses" 
+        @click="increment"
+        :aria-label="`Increase ${label || 'value'}`"
+        :aria-describedby="error ? `error-${inputId}` : undefined"
+      >
         +
       </button>
     </div>
-    <span v-if="error" class="text-sm text-red-500">{{ error }}</span>
+    <span v-if="error" :id="`error-${inputId}`" class="text-sm text-red-500" role="alert">{{ error }}</span>
   </div>
 </template>
 

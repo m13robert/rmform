@@ -15,10 +15,10 @@
           <IndeterminateIcon v-else />
         </span>
       </label>
-      <label :class="labelClasses" :for="id">{{ label }} {{ id }}</label>
+      <label :class="labelClasses" :for="id">{{ label }}</label>
     </div>
-    <div v-if="hasError && displayErrorMessage" class="text-red-600 text-sm mt-1">
-      {{ displayErrorMessage }}
+    <div v-if="hasError && displayErrorMessage" class="text-red-600 text-sm mt-1 flex self-start">
+      <p>{{ displayErrorMessage }}</p>
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ function cycleState(event) {
   }
 
   emit('update:modelValue', state.value === true)
-  
+
   // Trigger validation
   validationError.value = isValid.value ? '' : displayErrorMessage.value
 

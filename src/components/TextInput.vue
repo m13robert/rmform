@@ -4,10 +4,22 @@
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
     </label>
-    <input :id="inputId" :type="type" :value="modelValue" :placeholder="placeholder" :disabled="disabled"
-      :readonly="readonly" :required="required" :class="inputClasses" @input="handleInput" @blur="handleBlur"
-      @focus="handleFocus" />
-    <span v-if="error" class="text-sm text-red-500">{{ error }}</span>
+    <input 
+      :id="inputId" 
+      :type="type" 
+      :value="modelValue" 
+      :placeholder="placeholder" 
+      :disabled="disabled"
+      :readonly="readonly" 
+      :required="required" 
+      :class="inputClasses" 
+      @input="handleInput" 
+      @blur="handleBlur"
+      @focus="handleFocus"
+      :aria-describedby="error ? `error-${inputId}` : undefined"
+      :aria-invalid="!!error"
+    />
+    <span v-if="error" :id="`error-${inputId}`" class="text-sm text-red-500" role="alert">{{ error }}</span>
   </div>
 </template>
 

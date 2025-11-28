@@ -16,8 +16,13 @@ watch(currentTheme, (newTheme) => {
 </script>
 <template>
   <div class="theme-switcher">
-    <button @click="toggleTheme" class="theme-toggle">
-      {{ currentTheme === 'light' ? '🌙' : '☀️' }}
+    <button @click="toggleTheme" class="theme-toggle"
+      :aria-label="`Switch to ${currentTheme === 'light' ? 'dark' : 'light'} theme`"
+      :aria-pressed="currentTheme === 'dark'" type="button">
+      <span aria-hidden="true">{{ currentTheme === 'light' ? '🌙' : '☀️' }}</span>
+      <span>
+        {{ currentTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme' }}
+      </span>
     </button>
   </div>
 </template>

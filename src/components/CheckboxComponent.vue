@@ -6,13 +6,14 @@
           :indeterminate="state === null" :checked="state === true" :disabled="disabled || readonly" />
         <span
           class="absolute text-white opacity-0 peer-indeterminate:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <CheckedErrorIcon v-if="hasError" />
-          <CheckedIcon v-else />
+          <IndeterminateErrorIcon v-if="hasError" />
+          <IndeterminateIcon v-else />
         </span>
         <span
           class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <IndeterminateErrorIcon v-if="hasError" />
-          <IndeterminateIcon v-else />
+
+          <CheckedErrorIcon v-if="hasError" />
+          <CheckedIcon v-else />
         </span>
       </label>
       <label :class="labelClasses" :for="id">{{ label }}</label>
@@ -24,10 +25,10 @@
 </template>
 <script setup>
 import { computed, nextTick, onMounted, ref } from 'vue'
-import CheckedIcon from '../assets/CheckedIcon.svg'
-import CheckedErrorIcon from '../assets/CheckedErrorIcon.svg'
-import IndeterminateIcon from '../assets/IndetereminateIcon.svg'
-import IndeterminateErrorIcon from '../assets/IndeterminateErrorIcon.svg'
+import CheckedIcon from './icons/CheckedIcon.vue'
+import CheckedErrorIcon from './icons/CheckedErrorIcon.vue'
+import IndeterminateIcon from './icons/IndeterminateIcon.vue'
+import IndeterminateErrorIcon from './icons/IndeterminateErrorIcon.vue'
 
 const props = defineProps({
   id: String,

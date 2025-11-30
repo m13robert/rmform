@@ -3,7 +3,7 @@
     <div class="flex justify-end">
       <ThemeSwitcher />
     </div>
-    <h1 class="text-2xl font-bold mb-6">User Registration</h1>
+    <h1 class="text-2xl text-primary font-bold mb-6">User Registration</h1>
 
     <form @submit.prevent="handleSubmit" class="space-y-4" novalidate>
       <TextInput v-model="form.name" label="Name" required :error="errors.name" @blur="validateName" />
@@ -12,14 +12,8 @@
 
       <NumberInputComponent v-model="form.age" label="Age" :min="18" :max="100" required :error="errors.age" />
 
-      <CheckboxComponent 
-        v-model="form.agreeToTerms" 
-        label="I agree to the terms and conditions"
-        :error="!!errors.terms"
-        :errorMessage="errors.terms"
-        id="terms-checkbox"
-        required
-      />
+      <CheckboxComponent v-model="form.agreeToTerms" label="I agree to the terms and conditions" :error="!!errors.terms"
+        :errorMessage="errors.terms" id="terms-checkbox" required />
 
       <div class="flex gap-4 pt-4 justify-center">
         <ButtonComponent type="submit" :disabled="!isFormValid" aria-describedby="form-status">
@@ -30,7 +24,7 @@
           Clear Fields
         </ButtonComponent>
       </div>
-      
+
       <div id="form-status" class="sr-only" aria-live="polite">
         {{ isFormValid ? 'Form is valid and ready to submit' : 'Form has validation errors' }}
       </div>

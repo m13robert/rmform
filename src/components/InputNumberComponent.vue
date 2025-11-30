@@ -4,42 +4,16 @@
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
     </label>
-    <div :class="containerClasses" :id="`container-${inputId}`">
-      <button 
-        type="button" 
-        :disabled="disabled || modelValue <= min" 
-        :class="buttonClasses" 
-        @click="decrement"
-        :aria-label="`Decrease ${label || 'value'}`"
-        :aria-describedby="error ? `error-${inputId}` : undefined"
-      >
+    <div :class="containerClasses">
+      <button type="button" :disabled="disabled || modelValue <= min" :class="buttonClasses" @click="decrement"
+        :aria-label="`Decrease ${label || 'value'}`" :aria-describedby="error ? `error-${inputId}` : undefined">
         -
       </button>
-      <input 
-        :id="inputId" 
-        type="number" 
-        :value="modelValue" 
-        :min="min" 
-        :max="max" 
-        :step="step" 
-        :disabled="disabled"
-        :readonly="readonly" 
-        :required="required" 
-        :class="inputClasses" 
-        @input="handleInput" 
-        @blur="handleBlur"
-        @focus="handleFocus"
-        :aria-describedby="error ? `error-${inputId}` : undefined"
-        :aria-invalid="!!error"
-      />
-      <button 
-        type="button" 
-        :disabled="disabled || modelValue >= max" 
-        :class="buttonClasses" 
-        @click="increment"
-        :aria-label="`Increase ${label || 'value'}`"
-        :aria-describedby="error ? `error-${inputId}` : undefined"
-      >
+      <input :id="inputId" type="number" :value="modelValue" :min="min" :max="max" :step="step" :disabled="disabled"
+        :readonly="readonly" :required="required" :class="inputClasses" @input="handleInput" @blur="handleBlur"
+        @focus="handleFocus" :aria-describedby="error ? `error-${inputId}` : undefined" :aria-invalid="!!error" />
+      <button type="button" :disabled="disabled || modelValue >= max" :class="buttonClasses" @click="increment"
+        :aria-label="`Increase ${label || 'value'}`" :aria-describedby="error ? `error-${inputId}` : undefined">
         +
       </button>
     </div>

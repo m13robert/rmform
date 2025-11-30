@@ -4,5 +4,9 @@
       "@/*": ["./src/*"]
     }
   },
+  "vueComplireOptions": {
+    "target": 3,
+    "globalTypesPath": "./.volar/vue-global.d.ts"
+  }
   "exclude": ["node_modules", "dist"]
 }

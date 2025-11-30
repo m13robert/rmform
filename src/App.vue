@@ -6,11 +6,12 @@
     <h1 class="text-2xl text-primary font-bold mb-6">User Registration</h1>
 
     <form @submit.prevent="handleSubmit" class="space-y-4" novalidate>
-      <TextInput v-model="form.name" label="Name" required :error="errors.name" @blur="validateName" />
+      <InputText v-model="form.name" label="Name" required :error="errors.name" @blur="validateName"
+        @update:model-value="errors.name = ''" />
 
-      <TextInput v-model="form.email" label="Email" type="email" required :error="errors.email" @blur="validateEmail" />
+      <InputText v-model="form.email" label="Email" type="email" required :error="errors.email" @blur="validateEmail" />
 
-      <NumberInputComponent v-model="form.age" label="Age" :min="18" :max="100" required :error="errors.age" />
+      <InputNumberComponent v-model="form.age" label="Age" :min="18" :max="100" required :error="errors.age" />
 
       <CheckboxComponent v-model="form.agreeToTerms" label="I agree to the terms and conditions" :error="!!errors.terms"
         :errorMessage="errors.terms" id="terms-checkbox" required />
@@ -35,8 +36,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useFormStore } from './stores/form'
-import TextInput from './components/TextInput.vue'
-import NumberInputComponent from './components/NumberInputComponent.vue'
+import InputText from './components/InputText.vue'
+import InputNumberComponent from './components/InputNumberComponent.vue'
 import CheckboxComponent from './components/CheckboxComponent.vue'
 import ButtonComponent from './components/ButtonComponent.vue'
 import ThemeSwitcher from './components/ThemeSwitcher.vue'

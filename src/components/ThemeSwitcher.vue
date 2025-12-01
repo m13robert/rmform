@@ -17,13 +17,13 @@ watch(currentTheme, (newTheme) => {
 <template>
   <div class="theme-switcher">
     <button @click="toggleTheme" class="theme-toggle"
-      :aria-label="`Switch to ${currentTheme === 'light' ? 'dark' : 'light'} theme`" a
+      :aria-label="`Switch to ${currentTheme === 'light' ? 'dark' : 'light'} theme`"
       :aria-pressed="currentTheme === 'dark'" type="button">
       <span aria-hidden="true">{{ currentTheme === 'light' ? '🌙' : '☀️' }}</span>
     </button>
   </div>
 </template>
-<style>
+<style scoped>
 h1 {
   color: var(--primary-color);
   margin-bottom: 20px;
